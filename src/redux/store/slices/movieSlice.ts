@@ -9,14 +9,13 @@ import {IMovie} from "../../../interfaces/movie.interface";
 interface IState {
     movies: IMovie[]
     page: number
-
-
+    currentPage: number
 }
 
 const initialState: IState = {
     movies: [],
-    page: 1
-
+    page: 1,
+    currentPage:1
 }
 
 

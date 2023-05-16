@@ -1,5 +1,5 @@
-export * from './Movie/Movie'
+export * from './MoviesListCard/MoviesListCard'
 export * from './Layout/Layout'
 export * from './Pagination/Pagination'
 export * from './PosterPreview/PosterPreview'
-export * from './Movies/Movies'
+export * from './MoviesListCards/MoviesListCards'

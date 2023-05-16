@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
 import './App.css';
-import {Layout, Movies} from "./components";
+import {Layout, MoviesListCards} from "./components";
 
 
 
@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
-                    <Route index element={<Movies/>}/>
+                    <Route index element={<MoviesListCards/>}/>
                 </Route>
             </Routes>
         </div>

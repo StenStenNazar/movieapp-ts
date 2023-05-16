@@ -1,0 +1,72 @@
+
+.main_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pagination_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.slider{
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 50%;
+
+    border-radius: 7px;
+    padding: 10px 5px  4px 10px;
+    margin:5px;
+}
+.page{
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 4px;
+    padding: 2px;
+    height: 16px;
+    min-width: 16px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    background-color:lightblue ;
+    font-family: sans-serif;
+}
+.page:hover{
+    background-color: darkcyan;
+}
+
+.page:hover{
+    cursor: pointer;
+}
+.slider::-webkit-scrollbar{
+    background-color: silver;
+    border-radius: 5px;
+    height: 6px;
+}
+.slider::-webkit-scrollbar-thumb{
+    background-color: darkcyan;
+    border-radius: 5px;
+}
+button{
+    display: flex;
+
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 4px;
+    border: none;
+    height: 22px;
+
+    color: #fff;
+    background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+    background-origin: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.page_of_pages{
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+
+}

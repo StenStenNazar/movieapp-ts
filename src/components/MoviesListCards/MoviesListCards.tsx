@@ -3,7 +3,9 @@ import React, {FC, useEffect} from 'react'
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import {Pagination} from "../Pagination/Pagination";
-import {Movie} from "../Movie/Movie";
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
+import './MoviesListCards.css'
+
 
 
 
@@ -13,7 +15,7 @@ interface IProps {
 
 }
 
-const Movies: FC<IProps> = () => {
+const MoviesListCards: FC<IProps> = () => {
     const {movies,page} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
 
@@ -23,9 +25,9 @@ const Movies: FC<IProps> = () => {
 
     return (
         <div>
+            <div className={'movie_list'}>{movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}</div>
             <Pagination/>
-            {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
         </div>
     );
 };
-export {Movies}
+export {MoviesListCards};
