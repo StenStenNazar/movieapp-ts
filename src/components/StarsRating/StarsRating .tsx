@@ -11,7 +11,7 @@ interface IProps {
 
 const StarsRating: FC<IProps> = ({vote_count, vote_average}) => {
     console.log(vote_average)
-    const ratingStar = Array.from({length: 10}, (elem, index) => {
+    const ratingStar = Array.from({length: 9}, (elem, index) => {
         const number = index + 0.5;
         return (
             <span key={index}>
@@ -24,8 +24,8 @@ const StarsRating: FC<IProps> = ({vote_count, vote_average}) => {
     });
     return (
         <div className={'icon_style'}>
-            {ratingStar}
-            <p>{vote_count} - reviews</p>
+           <div> {ratingStar}</div>
+            <div>({vote_count}  reviews)</div>
         </div>
 
     )

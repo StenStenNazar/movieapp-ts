@@ -3,7 +3,7 @@
 
 
 export const urls ={
-    page:'/movie?page='
+    page:'/movie?language=uk&page='
 }
 
 export {

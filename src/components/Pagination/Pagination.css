@@ -25,29 +25,28 @@
     margin-right: 10px;
     border-radius: 4px;
     padding: 2px;
-    height: 16px;
-    min-width: 16px;
-    align-content: center;
-    justify-content: center;
+    height: 35px;
+    min-width: 40px;
+    font-size: 30px;
     text-align: center;
-    background-color:lightblue ;
+    background:linear-gradient(180deg, #726f6f 0%, #38383b 100%);
     font-family: sans-serif;
+    color: snow;
 }
-.page:hover{
-    background-color: darkcyan;
-}
+
 
 .page:hover{
     cursor: pointer;
 }
 .slider::-webkit-scrollbar{
-    background-color: silver;
+    background-color: white;
     border-radius: 5px;
     height: 6px;
 }
 .slider::-webkit-scrollbar-thumb{
-    background-color: darkcyan;
+    background:linear-gradient(180deg, #726f6f 0%, #38383b 100%);
     border-radius: 5px;
+    width: 55px;
 }
 button{
     display: flex;
@@ -57,10 +56,10 @@ button{
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
     border-radius: 4px;
     border: none;
-    height: 22px;
-
+    height: 39px;
+    font-size: 20px;
     color: #fff;
-    background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+    background: linear-gradient(180deg, #726f6f 0%, #38383b 100%);
     background-origin: border-box;
     user-select: none;
     -webkit-user-select: none;

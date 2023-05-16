@@ -2,3 +2,10 @@
 .icon{
     color: gold;
 }
+.icon_style{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}

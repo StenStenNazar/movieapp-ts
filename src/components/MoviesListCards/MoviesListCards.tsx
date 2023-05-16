@@ -16,17 +16,22 @@ interface IProps {
 }
 
 const MoviesListCards: FC<IProps> = () => {
-    const {movies,page} = useAppSelector(state => state.movieReducer);
+    const {movies,page,loading} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
+
+    console.log(movies)
 
     useEffect(() => {
         dispatch(movieActions.getPages({numberOfPage:page}))
     }, [dispatch,page])
 
+    console.log(loading)
+
     return (
         <div>
+            <div>{loading && <h1>loading...</h1>}</div>
             <div className={'movie_list'}>{movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}</div>
-            <Pagination/>
+            {movies && <Pagination/>}
         </div>
     );
 };

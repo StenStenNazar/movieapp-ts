@@ -1,6 +1,7 @@
 import {FC} from 'react'
 
 import {imageURL} from "../../constants/urls";
+import './PosterPreview.css'
 
 interface IProps{
     poster_path:string
@@ -10,7 +11,7 @@ interface IProps{
 const PosterPreview: FC<IProps> = ({poster_path,original_title}) =>{
 return(
        <div>
-           <img src={`${imageURL}/${poster_path}`} alt={original_title}/>
+           <img className={'img'} src={`${imageURL}/${poster_path}`} alt={original_title}/>
        </div>
     );
 };

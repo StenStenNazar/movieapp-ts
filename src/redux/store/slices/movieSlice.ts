@@ -10,12 +10,14 @@ interface IState {
     movies: IMovie[]
     page: number
     currentPage: number
+    loading:boolean
 }
 
 const initialState: IState = {
     movies: [],
     page: 1,
-    currentPage:1
+    currentPage:1,
+    loading:false
 }
 
 
@@ -42,7 +44,12 @@ const movieSlice = createSlice({
                 let {results, page} = action.payload
                 state.movies = results
                 state.page = page
+                state.loading = false
             })
+            .addCase(getPages.pending,(state, action)=>{
+                state.loading = true
+            })
+
 })
 
 const {actions, reducer: movieReducer} = movieSlice
