@@ -1,0 +1,13 @@
+.all_genre{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 60%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0px 0px 10px 18%;
+
+}

@@ -7,5 +7,6 @@ import {IMovie} from "../interfaces/movie.interface";
 
 
 export const movieService = {
-    getSelectedPAge :(numberOfPage:number):IRes<IPage<IMovie[]>> => axiosService.get(`${urls.page}${numberOfPage}`)
+    getSelectedPAge: (numberOfPage: number): IRes<IPage<IMovie[]>> => axiosService.get(`${urls.page}${numberOfPage}`),
+    getSelectedGenre: (idOfGenre:number): IRes<IPage<IMovie[]>> => axiosService.get(`${urls.moviesGenre}${idOfGenre}`)
 }

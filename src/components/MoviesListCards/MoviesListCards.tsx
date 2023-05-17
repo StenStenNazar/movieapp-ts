@@ -5,6 +5,8 @@ import {movieActions} from "../../redux/store/slices/movieSlice";
 import {Pagination} from "../Pagination/Pagination";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import './MoviesListCards.css'
+import AllGenres from "../AllGenres/AllGenres";
+
 
 
 
@@ -22,16 +24,17 @@ const MoviesListCards: FC<IProps> = () => {
     console.log(movies)
 
     useEffect(() => {
-        dispatch(movieActions.getPages({numberOfPage:page}))
+        if(movies.length === 0){
+            dispatch(movieActions.getPages({numberOfPage:page}))
+        }
     }, [dispatch,page])
-
-    console.log(loading)
 
     return (
         <div>
             <div>{loading && <h1>loading...</h1>}</div>
+            <AllGenres/>
             <div className={'movie_list'}>{movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}</div>
-            {movies && <Pagination/>}
+             <Pagination/>
         </div>
     );
 };

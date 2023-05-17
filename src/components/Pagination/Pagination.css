@@ -48,7 +48,7 @@
     border-radius: 5px;
     width: 55px;
 }
-button{
+.prev_next{
     display: flex;
 
     align-items: center;

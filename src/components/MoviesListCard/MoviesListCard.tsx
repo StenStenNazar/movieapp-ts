@@ -4,6 +4,8 @@ import {IMovie} from "../../interfaces/movie.interface";
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import './MoviesListCard.css'
 import StarsRating from "../StarsRating/StarsRating ";
+import {Link} from "react-router-dom";
+
 
 
 interface IProps {
@@ -15,8 +17,10 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
     return (
         <div className={'poster_title_wrapper'}>
+            <Link to={'/movieInfo'} state={movie}>
             <PosterPreview poster_path={poster_path} original_title={original_title}/>
             <div className={'poster_title'}>{title}</div>
+            </Link>
             <StarsRating key={id} vote_average={vote_average} vote_count={vote_count}/>
         </div>
     );
