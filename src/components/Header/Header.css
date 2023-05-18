@@ -1,0 +1,22 @@
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 60px;
+    text-align: center;
+    padding: 8px 16px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: black;
+}
+.user{
+    background-size:cover;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/013/042/571/original/default-avatar-profile-icon-social-media-user-photo-in-flat-style-vector.jpg");
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+

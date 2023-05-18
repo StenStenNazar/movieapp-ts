@@ -5,12 +5,13 @@ import {AxiosError} from "axios";
 
 interface IState {
     genres:IGenre[]
+    genre:null
 
 }
 
 const initialState: IState = {
-    genres: []
-
+    genres: [],
+    genre:null
 }
 
 const getGenres = createAsyncThunk<IGenre[],void>(
@@ -30,7 +31,12 @@ const getGenres = createAsyncThunk<IGenre[],void>(
 const genreSlice = createSlice({
     name: 'genreSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setGenre: (state, action)=>{
+            console.log(action.payload.genre)
+            state.genre = action.payload.genre
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(getGenres.fulfilled,(state, action)=>{

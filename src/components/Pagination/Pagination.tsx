@@ -4,34 +4,41 @@ import {movieActions} from "../../redux/store/slices/movieSlice";
 import './Pagination.css'
 
 const Pagination: FC = () => {
-    let {page} = useAppSelector(state => state.movieReducer);
+    let {page, IdOfGenre,total_pages} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
 
-    const next = () => {
+    const next = (): void => {
         dispatch(
-            movieActions.getPages({numberOfPage: page = page + 1}))
+            movieActions.getPages(
+                {numberOfPage: page = page + 1, genreId: IdOfGenre ? IdOfGenre.toString() : ''}))
     }
 
-    const prev = () => {
+    const prev = (): void => {
         dispatch(
-            movieActions.getPages({numberOfPage: page = page - 1}))
+            movieActions.getPages(
+                {numberOfPage: page = page - 1, genreId: IdOfGenre ? IdOfGenre.toString() : ''}))
     }
 
-    const curr = (page: number) => {
+    const curr = (page: number): void => {
         dispatch(
-            movieActions.getPages({numberOfPage: page}))
+            movieActions.getPages(
+                {numberOfPage: page, genreId: IdOfGenre ? IdOfGenre.toString() : ''}))
     }
-    const pages = Array.from(Array(501).keys()).slice(1);
+
+    const pages = Array.from(Array(total_pages? Math.floor(total_pages/20):501).keys()).slice(1);
 
     return (
         <div className={'main_wrapper'}>
             <div className={'pagination_wrapper'}>
-                <div className={'prev_button'}>{page !== 1 && <button className={'prev_next'} onClick={() => prev()}>Prev</button>}</div>
+
+                <div className={'prev_button'}>{page !== 1 &&
+                    <button className={'prev_next'} onClick={() => prev()}>Prev</button>}</div>
 
                 <div className={'slider'}>{pages.map((page) => (
                     <div className={'page'} key={page} onClick={() => curr(page)}>{page}</div>))}</div>
 
-                <div className={'next_button'}>{page < 500 && <button className={'prev_next'} onClick={() => next()}>Next</button>}</div>
+                <div className={'next_button'}>{page < 500 &&
+                    <button className={'prev_next'} onClick={() => next()}>Next</button>}</div>
             </div>
             <div className={'page_of_pages'}>{page} ... 500</div>
         </div>

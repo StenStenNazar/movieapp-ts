@@ -1,23 +1,32 @@
-import React, {FC, useState} from 'react'
+import React, {FC} from 'react'
 
 import {IGenre} from "../../interfaces/genre.interface";
 import './Genre.css'
 import {ISetState} from "../../types/setState.type";
 import {NavLink} from "react-router-dom";
+import {movieActions} from "../../redux/store/slices/movieSlice";
+import {useAppDispatch} from "../../hooks/redux.hooks";
 
 interface IProps {
     genre: IGenre
-    setId:ISetState<number>
+
 }
 
 
-const Genre: FC<IProps> = ({genre,setId}) => {
+const Genre: FC<IProps> = ({genre}) => {
+    const dispatch = useAppDispatch();
     const {name, id} = genre
+
+    const searchGenre = (id: number) => {
+        dispatch(movieActions.getMovieGenres({idOfGenre: id}))
+        dispatch(movieActions.setIdOfGenre({id}))
+        // setId(id)
+    }
 
 
     return (
         <div className={'genre'}>
-            <NavLink  className={'one_genre'} to={`${name}`.toLowerCase()}><div  onClick={()=>setId(id)}>{name}</div></NavLink>
+            <NavLink  className={'one_genre'} to={`${name}`.toLowerCase()}><div onClick={()=>searchGenre(id)}>{name}</div></NavLink>
         </div>
     );
 };

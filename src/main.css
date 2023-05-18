@@ -1,0 +1,10 @@
+
+.App.light {
+    background: linear-gradient(180deg, #d0d0dc 0%, #D0D0DCFF 100%);
+    color: #000;
+}
+
+.App.dark {
+    background: linear-gradient(180deg, #38383b 0%, #38383b 100%);
+    color: #fff;
+}

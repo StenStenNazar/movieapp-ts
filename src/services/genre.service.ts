@@ -4,5 +4,5 @@ import {IRes} from "../types/axios.type";
 import {IGenre} from "../interfaces/genre.interface";
 
  export const genreService = {
-    getGenre :():IRes<IGenre[]> => axiosService.get(urls.genre)
+    getGenre :():IRes<IGenre[]> => axiosService.get(urls.allGenres)
 }

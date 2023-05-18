@@ -9,20 +9,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 700px;
 }
 .slider{
     overflow-x: auto;
     white-space: nowrap;
-    width: 50%;
-
+    width: 100%;
     border-radius: 7px;
-    padding: 10px 5px  4px 10px;
+    padding: 10px 1px  3px 1px;
     margin:5px;
+
 }
 .page{
     display: inline-block;
-    margin-right: 10px;
     border-radius: 4px;
     padding: 2px;
     height: 35px;
@@ -32,11 +31,14 @@
     background:linear-gradient(180deg, #726f6f 0%, #38383b 100%);
     font-family: sans-serif;
     color: snow;
+    margin-right: 5px;
 }
 
 
-.page:hover{
+.page:hover,
+.prev_next:hover{
     cursor: pointer;
+    background:#726f6f;
 }
 .slider::-webkit-scrollbar{
     background-color: white;
@@ -50,7 +52,6 @@
 }
 .prev_next{
     display: flex;
-
     align-items: center;
     padding: 6px 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -65,6 +66,9 @@
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+
+
 .page_of_pages{
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
 
