@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import './components/Header/Header.css'
 import Toggle from "./components/Toggle/Toggle";
 import {useAppSelector} from "./hooks/redux.hooks";
+import Videos from "./components/Videos/Videos";
 
 
 

@@ -1,4 +1,4 @@
-import {IGenre} from "../../../interfaces/genre.interface";
+import {IGenre, IGenrePage} from "../../../interfaces/genre.interface";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {genreService} from "../../../services/genre.service";
 import {AxiosError} from "axios";
@@ -14,7 +14,7 @@ const initialState: IState = {
     genre:null
 }
 
-const getGenres = createAsyncThunk<IGenre[],void>(
+const getGenres = createAsyncThunk<IGenrePage<IGenre[]>,void>(
     'genreSlice/getGenres',
     async (_,{rejectWithValue})=>{
        try {
@@ -40,7 +40,8 @@ const genreSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getGenres.fulfilled,(state, action)=>{
-                state.genres = Object.values(action.payload)
+                const {genres} =action.payload
+                state.genres = genres
             })
 
 })

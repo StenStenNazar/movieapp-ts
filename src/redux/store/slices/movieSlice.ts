@@ -4,6 +4,8 @@ import {AxiosError} from "axios";
 import {movieService} from "../../../services/movie.service";
 import {IPage} from "../../../interfaces/page.interface";
 import {IMovie} from "../../../interfaces/movie.interface";
+import {IVideoPage} from "../../../interfaces/videopage.interface";
+import {IVideo} from "../../../interfaces/video.interface";
 
 
 
@@ -16,6 +18,7 @@ interface IState {
     IdOfGenre:number|null
     trigger:boolean
     notFoundTrigger:boolean
+    videos:IVideo[]
 
 }
 
@@ -28,6 +31,8 @@ const initialState: IState = {
     total_pages:null,
     trigger:true,
     notFoundTrigger:false,
+    videos:[],
+
 }
 
 const getPages = createAsyncThunk<IPage<IMovie[]>, {genreId:string , numberOfPage: number }>(
@@ -69,6 +74,19 @@ const getSearchedMovie = createAsyncThunk<IPage<IMovie[]>, {title:string}>(
     }
 )
 
+const getMovieVideo = createAsyncThunk<IVideoPage<IVideo[]>, {movieId:number}>(
+    'movieSlice/getMovieVideo',
+    async ({movieId}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getMovieVideo(movieId)
+            return data
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response?.data)
+        }
+    }
+)
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -98,9 +116,10 @@ const movieSlice = createSlice({
                 // state.loading = false
                 state.trigger= false
             })
-            // .addCase(getMovieVideo.fulfilled,(state,action)=>{
-            //
-            // })
+            .addCase(getMovieVideo.fulfilled,(state,action)=>{
+                const {results}=action.payload
+                state.videos = results
+            })
             .addMatcher(isPending(getMovieGenres,getPages),(state)=>{
                 // state.loading = true
             })
@@ -115,6 +134,7 @@ const movieActions = {
     getPages,
     getMovieGenres,
     getSearchedMovie,
+    getMovieVideo,
 }
 
 export {

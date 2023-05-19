@@ -2,7 +2,6 @@ import React, {FC} from 'react'
 
 import {IGenre} from "../../interfaces/genre.interface";
 import './Genre.css'
-import {ISetState} from "../../types/setState.type";
 import {NavLink} from "react-router-dom";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import {useAppDispatch} from "../../hooks/redux.hooks";
