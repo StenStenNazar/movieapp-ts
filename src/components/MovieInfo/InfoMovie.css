@@ -1,4 +1,13 @@
 .img_info{
     width: 240px;
     height: 360px;
+
+}
+.lazy{
+    background-color: red;
+}
+.rrrrrr{
+ width: 75%;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5)
 }

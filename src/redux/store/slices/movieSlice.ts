@@ -13,33 +13,35 @@ interface IState {
     movies: IMovie[]
     page: number
     currentPage: number
-    total_pages:number| null
-    loading:boolean,
-    IdOfGenre:number|null
-    trigger:boolean
-    notFoundTrigger:boolean
-    videos:IVideo[]
+    total_pages: number | null
+    loading: boolean,
+    IdOfGenre: number | null
+    paginTrigger: boolean
+    notFoundTrigger: boolean
+    videos: IVideo[]
+    curMovie: IMovie
 
 }
 
 const initialState: IState = {
     movies: [],
     page: 1,
-    currentPage:1,
-    loading:false,
-    IdOfGenre:null,
-    total_pages:null,
-    trigger:true,
-    notFoundTrigger:false,
-    videos:[],
+    currentPage: 1,
+    loading: false,
+    IdOfGenre: null,
+    total_pages: null,
+    paginTrigger: false,
+    notFoundTrigger: false,
+    videos: [],
+    curMovie:null
 
 }
 
-const getPages = createAsyncThunk<IPage<IMovie[]>, {genreId:string , numberOfPage: number }>(
+const getPages = createAsyncThunk<IPage<IMovie[]>, { genreId: string, numberOfPage: number }>(
     'movieSlice/getPages',
-    async ({genreId,numberOfPage}, {rejectWithValue}) => {
+    async ({genreId, numberOfPage}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getSelectedPAge(genreId,numberOfPage)
+            const {data} = await movieService.getSelectedPAge(genreId, numberOfPage)
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -48,7 +50,7 @@ const getPages = createAsyncThunk<IPage<IMovie[]>, {genreId:string , numberOfPag
     }
 )
 
-const getMovieGenres = createAsyncThunk<IPage<IMovie[]>, {idOfGenre:number}>(
+const getMovieGenres = createAsyncThunk<IPage<IMovie[]>, { idOfGenre: number }>(
     'movieSlice/getMovieGenres',
     async ({idOfGenre}, {rejectWithValue}) => {
         try {
@@ -61,7 +63,7 @@ const getMovieGenres = createAsyncThunk<IPage<IMovie[]>, {idOfGenre:number}>(
     }
 )
 
-const getSearchedMovie = createAsyncThunk<IPage<IMovie[]>, {title:string}>(
+const getSearchedMovie = createAsyncThunk<IPage<IMovie[]>, { title: string }>(
     'movieSlice/getSearchedMovie',
     async ({title}, {rejectWithValue}) => {
         try {
@@ -74,12 +76,12 @@ const getSearchedMovie = createAsyncThunk<IPage<IMovie[]>, {title:string}>(
     }
 )
 
-const getMovieVideo = createAsyncThunk<IVideoPage<IVideo[]>, {movieId:number}>(
+const getMovieVideo = createAsyncThunk<IVideoPage<IVideo[]>, { movieId: number }>(
     'movieSlice/getMovieVideo',
     async ({movieId}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getMovieVideo(movieId)
-            return data
+            return (await data)
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response?.data)
@@ -91,8 +93,11 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
-        setIdOfGenre:(state, action)=>{
+        setIdOfGenre: (state, action) => {
             state.IdOfGenre = action.payload.id
+        },
+        setCurMovie: (state, action) => {
+            state.curMovie = action.payload.movie
         }
     },
     extraReducers: builder =>
@@ -103,28 +108,26 @@ const movieSlice = createSlice({
                 state.page = page
                 // state.loading = false
             })
-            .addCase(getMovieGenres.fulfilled,(state, action)=>{
-                let {results,page,total_pages} = action.payload
+            .addCase(getMovieGenres.fulfilled, (state, action) => {
+                let {results, page, total_pages} = action.payload
                 state.movies = results
-                // state.loading = false
                 state.page = page
                 state.total_pages = total_pages
             })
-            .addCase(getSearchedMovie.fulfilled,(state, action)=>{
+            .addCase(getSearchedMovie.fulfilled, (state, action) => {
                 let {results} = action.payload
                 state.movies = results
-                // state.loading = false
-                state.trigger= false
+                state.paginTrigger = false
             })
-            .addCase(getMovieVideo.fulfilled,(state,action)=>{
-                const {results}=action.payload
+            .addCase(getMovieVideo.fulfilled, (state, action) => {
+                const {results} = action.payload
                 state.videos = results
             })
-            .addMatcher(isPending(getMovieGenres,getPages),(state)=>{
-                // state.loading = true
-            })
-            .addMatcher(isFulfilled(getMovieGenres,getPages),(state)=>{
-                state.trigger= true
+            .addCase(getMovieVideo.pending, (state, action) => {
+            state.videos = []
+        })
+            .addMatcher(isFulfilled(getMovieGenres, getPages), (state) => {
+                state.paginTrigger = true
             })
 })
 const {actions, reducer: movieReducer} = movieSlice

@@ -13,27 +13,16 @@ interface IProps {
 }
 
 const AllGenres: FC<IProps> = () => {
-
     const {genres} = useAppSelector(state => state.genreReducer);
     const dispatch = useAppDispatch();
-
-    console.log(genres)
 
     useEffect(() => {
         dispatch(genreActions.getGenres())
     }, [dispatch])
 
-    // const curGenres = JSON.parse(JSON.stringify(genres))
-    // const genre = []
-    // for (const item of curGenres) {
-    //     for (const obj of item) {
-    //         genre.push(obj)
-    //     }
-    // }
-
     return (
         <div className={'all_genre'}>
-            { genres && genres.map(genre => <Genre key={genre.id} genre={genre}/>)}
+            {genres && genres.map(genre => <Genre key={genre.id} genre={genre}/>)}
         </div>
     );
 };

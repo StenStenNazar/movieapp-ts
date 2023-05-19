@@ -19,7 +19,6 @@ const Genre: FC<IProps> = ({genre}) => {
     const searchGenre = (id: number) => {
         dispatch(movieActions.getMovieGenres({idOfGenre: id}))
         dispatch(movieActions.setIdOfGenre({id}))
-        // setId(id)
     }
 
 

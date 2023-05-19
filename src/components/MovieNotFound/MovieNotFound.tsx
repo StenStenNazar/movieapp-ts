@@ -6,7 +6,7 @@ const MovieNotFound: FC = () => {
     const {movies} = useAppSelector(state => state.movieReducer);
     return (
         <div>
-            {movies.length===0 && <h2>Нажаль фільм не знайдено...</h2>}
+            {movies.length ===0 && <h2>Нажаль фільм не знайдено...</h2>}
         </div>
     );
 };

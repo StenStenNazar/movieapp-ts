@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import {useAppDispatch} from "../../hooks/redux.hooks";
 
+
 interface IProps {
     genre: IGenre
 }

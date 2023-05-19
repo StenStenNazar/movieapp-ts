@@ -3,6 +3,7 @@ import {FC} from 'react'
 import {imageURL} from "../../constants/urls";
 import './PosterPreview.css'
 import {imagePlaceholder} from '../../assets/imagePlaceholder'
+import {IMovie} from "../../interfaces/movie.interface";
 
 interface IProps {
     poster_path: string
@@ -10,7 +11,6 @@ interface IProps {
 }
 
 const PosterPreview: FC<IProps> = ({poster_path, original_title}) => {
-
     const img = poster_path ? `${imageURL}/${poster_path}` : imagePlaceholder
     return (
         <div>
