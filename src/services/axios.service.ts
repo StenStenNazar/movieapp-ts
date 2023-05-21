@@ -1,9 +1,10 @@
 import axios from "axios";
-import { MoviesBaseURL} from "../constants/urls";
+
+import {MoviesBaseURL} from "../constants/urls";
 import {token} from "../token/token";
 
- const axiosService = axios.create({
-    baseURL:MoviesBaseURL
+const axiosService = axios.create({
+    baseURL: MoviesBaseURL
 })
 
 axiosService.interceptors.request.use(res => {

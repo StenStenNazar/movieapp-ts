@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
 import {genreActions} from "../../redux/store/slices/genreSlice";
@@ -8,7 +8,7 @@ import {imageUrlOriginal} from "../../constants/urls";
 import CurGenres from "../CurGenres/CurGenres";
 import Videos from "../Videos/Videos";
 import './InfoMovie.css'
-import SearchMovieForm from "../SearchMovieForm/SearchMovieForm";
+
 
 const InfoMovie: FC = () => {
     const {movies} = useAppSelector(state => state.movieReducer);
@@ -27,7 +27,7 @@ const InfoMovie: FC = () => {
 
     useEffect(() => {
         dispatch(genreActions.getGenres())
-    }, [dispatch,movies])
+    }, [dispatch, movies])
 
     return (
         <div className={'main_wrapper_info-movie'}>

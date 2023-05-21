@@ -1,7 +1,7 @@
 import {FC} from 'react'
+import {NavLink} from "react-router-dom";
 
 import {IGenre} from "../../interfaces/genre.interface";
-import {NavLink} from "react-router-dom";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import {useAppDispatch} from "../../hooks/redux.hooks";
 import './CurGenres.css'
@@ -15,7 +15,7 @@ const CurGenres: FC<IProps> = ({genre}) => {
     const {name, id} = genre
     const dispatch = useAppDispatch();
 
-    const getGenre = (id: number) => {
+    const getGenre = (id: number):void => {
         dispatch(movieActions.getMovieGenres({idOfGenre: id}))
     }
 

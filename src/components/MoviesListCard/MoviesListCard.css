@@ -7,7 +7,8 @@
     align-items: center;
     justify-content: center;
 }
-.poster_title_wrapper{
+
+.poster_title_wrapper {
     background: white;
     border-bottom: 1px solid #726f6f;
     border-left: 1px solid #726f6f;
@@ -23,8 +24,9 @@
     padding-bottom: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
-.title_link{
+
+.title_link {
     text-decoration: none;
     color: black;
-   font-weight: bold;
+    font-weight: bold;
 }

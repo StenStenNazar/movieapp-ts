@@ -5,11 +5,15 @@ import './MovieNotFound.css'
 
 
 const MovieNotFound: FC = () => {
-    const {movies} = useAppSelector(state => state.movieReducer);
+    const {movies,error} = useAppSelector(state => state.movieReducer);
+
     return (
         <div className={'not_found_page'}>
-            {movies.length ===0 &&
-                <h2>Нажаль фільм не знайдено...</h2>
+            {movies.length === 0 &&
+                <div>
+                    <b>...</b>
+                    {error && <p>вибачте за неполадки</p>}
+                </div>
             }
         </div>
     );

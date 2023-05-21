@@ -21,7 +21,7 @@ const SearchMovieForm: FC = () => {
     return (
         <form onSubmit={handleSubmit(search)}>
             <input className={'search_form'} type="text" placeholder={'movie title...'} {...register('title')}/>
-            <button  disabled={!watch('title')} className={'search_button'}>search</button>
+            <button disabled={!watch('title')} className={'search_button'}>search</button>
         </form>
     );
 };

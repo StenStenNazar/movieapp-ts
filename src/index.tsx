@@ -6,9 +6,8 @@ import {BrowserRouter} from "react-router-dom";
 import {setupStore} from "./redux/store/store";
 import App from './App';
 
-
-
 const store = setupStore();
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );

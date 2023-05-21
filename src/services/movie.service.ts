@@ -4,7 +4,7 @@ import {axiosService} from "./axios.service";
 import {urls} from "../constants/urls";
 import {IPage} from "../interfaces/page.interface";
 import {IMovie} from "../interfaces/movie.interface";
-import { IVideoPage} from "../interfaces/videopage.interface";
+import {IVideoPage} from "../interfaces/videopage.interface";
 import {IVideo} from "../interfaces/video.interface";
 
 
@@ -18,6 +18,6 @@ export const movieService = {
     getSearchedMovie: (title: string): IRes<IPage<IMovie[]>> =>
         axiosService.get(`${urls.moviesSearch}${title}`),
 
-    getMovieVideo :(movieId:number):IRes<IVideoPage<IVideo[]>> =>
+    getMovieVideo: (movieId: number): IRes<IVideoPage<IVideo[]>> =>
         axiosService.get(`${urls.movieVideos}${movieId}/videos`)
 }

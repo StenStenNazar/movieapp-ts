@@ -11,8 +11,6 @@ import Footer from "./components/Footer/Footer";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 
-
-
 function App() {
     const {isDark} = useAppSelector(state => state.switchReducer);
 
@@ -33,4 +31,5 @@ function App() {
         </div>
     );
 }
+
 export default App;

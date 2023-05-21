@@ -23,9 +23,10 @@ const Videos: FC<IProps> = ({id}) => {
         <div className={'video'}>
             {trailer[0] &&
                 <iframe className={'youtube_video'}
-                    src={`https://www.youtube.com/embed/${trailer[0].key}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                        src={`https://www.youtube.com/embed/${trailer[0].key}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={'відео'}
                 ></iframe>
             }
         </div>

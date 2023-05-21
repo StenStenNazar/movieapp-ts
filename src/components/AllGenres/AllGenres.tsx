@@ -6,13 +6,7 @@ import Genre from "../Genre/Genre";
 import './AllGenre.css'
 
 
-
-
-interface IProps {
-
-}
-
-const AllGenres: FC<IProps> = () => {
+const AllGenres: FC = () => {
     const {genres} = useAppSelector(state => state.genreReducer);
     const dispatch = useAppDispatch();
 

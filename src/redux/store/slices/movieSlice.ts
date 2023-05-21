@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, isFulfilled} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {movieService} from "../../../services/movie.service";
@@ -6,6 +6,7 @@ import {IPage} from "../../../interfaces/page.interface";
 import {IMovie} from "../../../interfaces/movie.interface";
 import {IVideoPage} from "../../../interfaces/videopage.interface";
 import {IVideo} from "../../../interfaces/video.interface";
+import {ErrorInterface} from "../../../interfaces/error.interface";
 
 
 interface IState {
@@ -19,6 +20,7 @@ interface IState {
     notFoundTrigger: boolean
     videos: IVideo[]
     curMovie: IMovie
+    error:ErrorInterface | null
 
 
 }
@@ -33,7 +35,8 @@ const initialState: IState = {
     paginTrigger: false,
     notFoundTrigger: false,
     videos: [],
-    curMovie: null
+    curMovie: null,
+    error:null
 }
 
 const getPages = createAsyncThunk<IPage<IMovie[]>, { genreId: string, numberOfPage: number }>(
@@ -98,8 +101,8 @@ const movieSlice = createSlice({
         setCurMovie: (state, action) => {
             state.curMovie = action.payload.movie
         },
-        setHomeTotalPage:(state, action)=>{
-             state.total_pages = action.payload
+        setHomeTotalPage: (state, action) => {
+            state.total_pages = action.payload
         }
     },
     extraReducers: builder =>
@@ -130,6 +133,13 @@ const movieSlice = createSlice({
             })
             .addMatcher(isFulfilled(getMovieGenres, getPages), (state) => {
                 state.paginTrigger = true
+            })
+            .addMatcher(isRejectedWithValue(
+                getMovieVideo,
+                getSearchedMovie,
+                getMovieGenres,
+                getPages),(state, action)=>{
+                state.error = action.payload
             })
 
 })

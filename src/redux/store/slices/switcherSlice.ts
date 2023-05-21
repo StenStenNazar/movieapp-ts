@@ -1,27 +1,26 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface IState {
-    isDark:boolean
+    isDark: boolean
 }
 
-
-const initialState:IState ={
-    isDark:false
+const initialState: IState = {
+    isDark: false
 }
 
 const switcherSlice = createSlice({
-    name:'switcherSlice',
+    name: 'switcherSlice',
     initialState,
-    reducers:{
-        setMode:(state)=>{
+    reducers: {
+        setMode: (state) => {
             state.isDark = !state.isDark
         }
     }
 
 })
 
-const {reducer:switchReducer,actions}=switcherSlice
- const  switchAction={
+const {reducer: switchReducer, actions} = switcherSlice
+const switchAction = {
     ...actions
 }
 

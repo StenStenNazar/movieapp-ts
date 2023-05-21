@@ -6,6 +6,7 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import './MoviesListCards.css'
 import AllGenres from "../AllGenres/AllGenres";
 import {movieActions} from "../../redux/store/slices/movieSlice";
+
 const LazyComponent = React.lazy(() => import("../MovieNotFound/MovieNotFound"));
 
 const MoviesListCards: FC = () => {

@@ -1,10 +1,10 @@
 import React, {FC} from 'react'
+import {useNavigate} from "react-router-dom";
 
 import './Header.css'
 import '../../main.css'
 import Toggle from "../Toggle/Toggle";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
-import {useNavigate} from "react-router-dom";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 
 
@@ -28,7 +28,10 @@ return(
                <div>
                    <Toggle/>
                </div>
-               <div className={'user'}></div>
+              <div>
+                  <div className={'user'}></div>
+                  <div>Nazar</div>
+              </div>
            </div>
        </div>
     );

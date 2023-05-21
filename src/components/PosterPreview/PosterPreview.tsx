@@ -3,7 +3,6 @@ import {FC} from 'react'
 import {imageURL} from "../../constants/urls";
 import './PosterPreview.css'
 import {imagePlaceholder} from '../../assets/imagePlaceholder'
-import {IMovie} from "../../interfaces/movie.interface";
 
 interface IProps {
     poster_path: string

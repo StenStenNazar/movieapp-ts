@@ -14,13 +14,14 @@ interface IProps {
 }
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
+
     const {poster_path, title, original_title, vote_average, vote_count, id} = movie
     const dispatch = useAppDispatch();
     const truncatedSentence = title.slice(0, 25) + (title.length > 25 ? '...' : '');
 
     return (
         <div onClick={() => dispatch(movieActions.setCurMovie({movie}))} className={'poster_title_wrapper'}>
-            <Link  className={'title_link'} to={'/movieInfo'} state={movie}>
+            <Link className={'title_link'} to={'/movieInfo'} state={movie}>
                 <PosterPreview poster_path={poster_path} original_title={original_title}/>
                 <div className={'poster_title'}>{truncatedSentence}</div>
             </Link>

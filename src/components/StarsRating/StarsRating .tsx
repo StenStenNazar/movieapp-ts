@@ -18,7 +18,6 @@ const StarsRating: FC<IProps> = ({vote_count, vote_average}) => {
                     : vote_average >= number ? (<FaStarHalfAlt className='icon'/>)
                     : (<AiOutlineStar className='icon'/>)}
              </span>
-
         );
     });
     return (

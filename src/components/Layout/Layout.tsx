@@ -1,5 +1,6 @@
 import React, {FC} from 'react'
 import {Outlet} from "react-router-dom";
+
 import SearchMovieForm from "../SearchMovieForm/SearchMovieForm";
 import './Layout.css'
 import {useAppSelector} from "../../hooks/redux.hooks";
