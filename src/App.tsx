@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import './components/Header/Header.css'
 import {useAppSelector} from "./hooks/redux.hooks";
 import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 
 
@@ -25,11 +26,11 @@ function App() {
                         <Route path={':genre_name'} element={<MoviesListCards/>}/>
                     </Route>
                     <Route path={'movieInfo'} element={<InfoMovie/>}/>
+                    <Route path={'*'} element={<PageNotFound/>}/>
                 </Route>
             </Routes>
             <Footer/>
         </div>
     );
 }
-
 export default App;

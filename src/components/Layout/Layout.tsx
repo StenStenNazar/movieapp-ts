@@ -15,7 +15,6 @@ const Layout: FC<IProps> = () =>{
 return(
     <div className={`layout_wrapper ${isDark ? 'dark' : 'light'}`}>
         <div className={'search-movie_wrapper'}>
-           <h1></h1>
             <SearchMovieForm/>
         </div>
         <Outlet/>

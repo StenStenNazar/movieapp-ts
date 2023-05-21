@@ -15,6 +15,7 @@ const Header: FC = () =>{
     const goHome =()=>{
         dispatch(movieActions.getPages({numberOfPage: 1, genreId:''}))
         navigate('/')
+        dispatch(movieActions.setHomeTotalPage(10020))
     }
 
 return(

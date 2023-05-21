@@ -9,6 +9,10 @@ const Pagination: FC = () => {
     let {page, IdOfGenre,total_pages} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
 
+    console.log(`${page} page`);
+    console.log(`${IdOfGenre} IdOfGenre`);
+    console.log(`${total_pages} total_pages`);
+
     const next = (): void => {
         dispatch(
             movieActions.getPages(

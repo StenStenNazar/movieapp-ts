@@ -10,6 +10,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: sans-serif;
     width: 100%;
+    padding: 8px;
 }
 .user{
     background-size:cover;
@@ -47,4 +48,5 @@
 }
 h1{
     cursor: pointer;
+    margin: 0;
 }

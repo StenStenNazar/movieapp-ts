@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, isFulfilled, isPending} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {movieService} from "../../../services/movie.service";
@@ -97,6 +97,9 @@ const movieSlice = createSlice({
         },
         setCurMovie: (state, action) => {
             state.curMovie = action.payload.movie
+        },
+        setHomeTotalPage:(state, action)=>{
+             state.total_pages = action.payload
         }
     },
     extraReducers: builder =>
@@ -105,7 +108,7 @@ const movieSlice = createSlice({
                 let {results, page} = action.payload
                 state.movies = results
                 state.page = page
-                state.total_pages = 10020
+
             })
             .addCase(getMovieGenres.fulfilled, (state, action) => {
                 let {results, page, total_pages} = action.payload
@@ -122,7 +125,7 @@ const movieSlice = createSlice({
                 const {results} = action.payload
                 state.videos = results
             })
-            .addCase(getMovieVideo.pending, (state, action) => {
+            .addCase(getMovieVideo.pending, (state) => {
                 state.videos = []
             })
             .addMatcher(isFulfilled(getMovieGenres, getPages), (state) => {
