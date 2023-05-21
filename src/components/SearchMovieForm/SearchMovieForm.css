@@ -1,0 +1,22 @@
+.search_form {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border: none;
+    height: 22px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.search_form:focus{
+    outline: none
+}
+
+
+.search_button{
+    border: none;
+    height: 24px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+}
+.search_button:hover{
+    background: #726f6f;
+}

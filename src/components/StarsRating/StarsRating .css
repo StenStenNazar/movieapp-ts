@@ -5,8 +5,9 @@
 }
 .icon_style{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 5px;
     align-items: center;
     justify-content: center;
+    color: #726f6f;
 }

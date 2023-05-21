@@ -1,5 +1,9 @@
-import {FC} from 'react'
+import React, {FC} from 'react'
 import {Outlet} from "react-router-dom";
+import SearchMovieForm from "../SearchMovieForm/SearchMovieForm";
+import './Layout.css'
+import {useAppSelector} from "../../hooks/redux.hooks";
+
 
 
 interface IProps{
@@ -7,11 +11,16 @@ interface IProps{
 }
 
 const Layout: FC<IProps> = () =>{
+    const {isDark} = useAppSelector(state => state.switchReducer);
 return(
-       <div>
-           <h1>Layout</h1>
-           <Outlet/>
-       </div>
+    <div className={`layout_wrapper ${isDark ? 'dark' : 'light'}`}>
+        <div className={'search-movie_wrapper'}>
+           <h1></h1>
+            <SearchMovieForm/>
+        </div>
+        <Outlet/>
+    </div>
+
     );
 };
 export {Layout}

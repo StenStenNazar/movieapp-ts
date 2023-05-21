@@ -16,6 +16,7 @@ const AllGenres: FC<IProps> = () => {
     const {genres} = useAppSelector(state => state.genreReducer);
     const dispatch = useAppDispatch();
 
+
     useEffect(() => {
         dispatch(genreActions.getGenres())
     }, [dispatch])

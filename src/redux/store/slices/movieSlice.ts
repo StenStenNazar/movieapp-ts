@@ -8,7 +8,6 @@ import {IVideoPage} from "../../../interfaces/videopage.interface";
 import {IVideo} from "../../../interfaces/video.interface";
 
 
-
 interface IState {
     movies: IMovie[]
     page: number
@@ -20,6 +19,7 @@ interface IState {
     notFoundTrigger: boolean
     videos: IVideo[]
     curMovie: IMovie
+
 
 }
 
@@ -33,8 +33,7 @@ const initialState: IState = {
     paginTrigger: false,
     notFoundTrigger: false,
     videos: [],
-    curMovie:null
-
+    curMovie: null
 }
 
 const getPages = createAsyncThunk<IPage<IMovie[]>, { genreId: string, numberOfPage: number }>(
@@ -106,7 +105,7 @@ const movieSlice = createSlice({
                 let {results, page} = action.payload
                 state.movies = results
                 state.page = page
-                // state.loading = false
+                state.total_pages = 10020
             })
             .addCase(getMovieGenres.fulfilled, (state, action) => {
                 let {results, page, total_pages} = action.payload
@@ -124,11 +123,12 @@ const movieSlice = createSlice({
                 state.videos = results
             })
             .addCase(getMovieVideo.pending, (state, action) => {
-            state.videos = []
-        })
+                state.videos = []
+            })
             .addMatcher(isFulfilled(getMovieGenres, getPages), (state) => {
                 state.paginTrigger = true
             })
+
 })
 const {actions, reducer: movieReducer} = movieSlice
 

@@ -1,6 +1,9 @@
 import {FC} from 'react'
+
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
 import {switchAction} from "../../redux/store/slices/switcherSlice";
+import './Toggle.css'
+import '../../main.css'
 
 interface IProps{
 
@@ -14,9 +17,13 @@ const Toggle: FC<IProps> = () =>{
         dispatch(switchAction.setMode());
     };
 
+
 return(
-       <div>
-           <button  onClick={()=>switcher()}>перемикач теми</button>
+       <div  className={'mode_button_wrapper'}>
+           <div
+               className={`button_mode ${isDark ? 'dark' : 'light'}`}
+               onClick={()=>switcher()} >{!isDark? 'dark mode':'light mode'}
+           </div>
        </div>
     );
 };

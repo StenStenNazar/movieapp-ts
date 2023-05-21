@@ -1,10 +1,49 @@
 
+
+/*апка*/
 .App.light {
-    background: linear-gradient(180deg, #d0d0dc 0%, #D0D0DCFF 100%);
+    background: snow;
     color: #000;
 }
-
 .App.dark {
     background: linear-gradient(180deg, #38383b 0%, #38383b 100%);
     color: #fff;
 }
+
+/*кнопка переключення теми*/
+
+.button_mode.dark{
+   border: 1px solid white;
+}
+
+.header.light{
+    background: linear-gradient(180deg, #9f9d9d 0%, #e0dddd 100%);
+    color: #000;
+}
+.header.dark{
+    background: linear-gradient(180deg, #38383b 0%, #38383b 100%);
+    color: #fff;
+}
+.footer.light{
+    background: linear-gradient(180deg, #d5d3d3 0%, #625f5f 100%);
+    color: #000;
+}
+.footer.dark{
+    background: linear-gradient(180deg, #38383b 0%, #38383b 100%);
+    color: #fff;
+}
+
+.slider::-webkit-scrollbar.light{
+    background: linear-gradient(180deg, #d5d3d3 0%, #625f5f 100%);
+    color: #000;
+}
+.slider::-webkit-scrollbar.dark{
+    background: linear-gradient(180deg, #38383b 0%, #38383b 100%);
+    color: #fff;
+}
+
+.layout_wrapper.dark{
+    background: linear-gradient(180deg, #5f5f60 0%, #38383b 100%);
+    color: #fff;
+}
+

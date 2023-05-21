@@ -6,9 +6,9 @@ import {Layout, MoviesListCards} from "./components";
 import InfoMovie from "./components/MovieInfo/InfoMovie";
 import Header from "./components/Header/Header";
 import './components/Header/Header.css'
-import Toggle from "./components/Toggle/Toggle";
 import {useAppSelector} from "./hooks/redux.hooks";
-import Videos from "./components/Videos/Videos";
+import Footer from "./components/Footer/Footer";
+
 
 
 
@@ -27,6 +27,7 @@ function App() {
                     <Route path={'movieInfo'} element={<InfoMovie/>}/>
                 </Route>
             </Routes>
+            <Footer/>
         </div>
     );
 }

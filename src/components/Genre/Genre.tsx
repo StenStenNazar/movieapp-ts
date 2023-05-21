@@ -5,6 +5,7 @@ import './Genre.css'
 import {NavLink} from "react-router-dom";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import {useAppDispatch} from "../../hooks/redux.hooks";
+import '../../main.css'
 
 interface IProps {
     genre: IGenre
@@ -23,7 +24,7 @@ const Genre: FC<IProps> = ({genre}) => {
 
 
     return (
-        <div className={'genre'}>
+        <div className={`genre`}>
             <NavLink  className={'one_genre'} to={`${name}`.toLowerCase()}><div onClick={()=>searchGenre(id)}>{name}</div></NavLink>
         </div>
     );

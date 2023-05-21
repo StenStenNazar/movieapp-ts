@@ -7,24 +7,5 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-}
-
-.search_genre_button{
-    display: flex;
-    align-items: center;
-    padding: 6px 8px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-    border-radius: 4px;
-    border: none;
-    height: 24px;
-    font-size: 20px;
-    color: #fff;
-    background: linear-gradient(180deg, #726f6f 0%, #38383b 100%);
-    background-origin: border-box;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-.search_genre_button:hover{
-    background:#726f6f;
+    font-family: sans-serif;
 }

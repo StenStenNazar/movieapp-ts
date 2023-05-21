@@ -5,7 +5,6 @@ import {Pagination} from "../Pagination/Pagination";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import './MoviesListCards.css'
 import AllGenres from "../AllGenres/AllGenres";
-import SearchMovieForm from "../SearchMovieForm/SearchMovieForm";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 const LazyComponent = React.lazy(() => import("../MovieNotFound/MovieNotFound"));
 
@@ -25,7 +24,7 @@ const MoviesListCards: FC<IProps> = () => {
 
     return (
         <div className={'main_wrapper'}>
-            <SearchMovieForm/>
+
             <div>{loading && <h1>loading...</h1>}</div>
             <AllGenres/>
             <Suspense>

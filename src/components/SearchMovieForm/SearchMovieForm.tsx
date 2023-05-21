@@ -1,27 +1,27 @@
 import {FC} from 'react'
 import {SubmitHandler, useForm} from "react-hook-form";
+
 import {ITitle} from "../../interfaces/title.interface";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
+import {useAppDispatch} from "../../hooks/redux.hooks";
 import {movieActions} from "../../redux/store/slices/movieSlice";
+import './SearchMovieForm.css'
+import {useNavigate} from "react-router-dom";
 
-
-interface IProps {
-
-}
-
-const SearchMovieForm: FC<IProps> = () => {
-    const {register, handleSubmit, reset} = useForm<ITitle>();
+const SearchMovieForm: FC = () => {
+    const {register, handleSubmit, reset, watch} = useForm<ITitle>();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const search: SubmitHandler<ITitle> = ({title}) => {
         dispatch(movieActions.getSearchedMovie({title}))
+        navigate('movies')
         reset()
     }
 
     return (
         <form onSubmit={handleSubmit(search)}>
-            <input type="text" placeholder={'search for a movie by title'} {...register('title')}/>
-            <button>search</button>
+            <input className={'search_form'} type="text" placeholder={'movie title...'} {...register('title')}/>
+            <button  disabled={!watch('title')} className={'search_button'}>search</button>
         </form>
     );
 };

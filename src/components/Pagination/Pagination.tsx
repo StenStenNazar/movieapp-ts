@@ -2,8 +2,10 @@ import {FC} from 'react'
 import {useAppDispatch, useAppSelector} from "../../hooks/redux.hooks";
 import {movieActions} from "../../redux/store/slices/movieSlice";
 import './Pagination.css'
+import '../../main.css'
 
 const Pagination: FC = () => {
+    const {isDark} = useAppSelector(state => state.switchReducer);
     let {page, IdOfGenre,total_pages} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
 
@@ -34,13 +36,13 @@ const Pagination: FC = () => {
                 <div className={'prev_button'}>{page !== 1 &&
                     <button className={'prev_next'} onClick={() => prev()}>Prev</button>}</div>
 
-                <div className={'slider'}>{pages.map((page) => (
+                <div className={`slider ${isDark ? 'dark' : 'light'}`}>{pages.map((page) => (
                     <div className={'page'} key={page} onClick={() => curr(page)}>{page}</div>))}</div>
 
                 <div className={'next_button'}>{page < 500 &&
                     <button className={'prev_next'} onClick={() => next()}>Next</button>}</div>
             </div>
-            <div className={'page_of_pages'}>{page} ... 500</div>
+            {/*<div className={'page_of_pages'}>{page} ... 500</div>*/}
         </div>
     );
 };

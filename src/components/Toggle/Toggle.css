@@ -1,0 +1,16 @@
+.mode_button_wrapper{
+    height: fit-content;
+}
+.button_mode{
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 4px;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 4px;
+}
+.button_mode:hover{
+    padding: 6px;
+    transition: all 250ms;
+    font-size: 17px;
+}
